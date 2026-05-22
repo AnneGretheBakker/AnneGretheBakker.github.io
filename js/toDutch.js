@@ -1,4 +1,8 @@
+/**
+ * Changes the language of the website to Dutch by changing the innerHTML of each part
+ */
 export function toDutch() {
+  /* App icons */
   const appIcons = document.getElementById("appIcons");
   appIcons.innerHTML = `
     <div class="icon" data-window="about">
@@ -23,6 +27,7 @@ export function toDutch() {
     </div>
   `;
 
+  /* My selfie */
   const windowSelfie = document.getElementById("window-selfie");
   windowSelfie.innerHTML = `
     <div class="window-bar">
@@ -34,6 +39,7 @@ export function toDutch() {
     </div>
   `
 
+  /* About me */
   const windowAbout = document.getElementById("window-about");
   windowAbout.innerHTML = `
     <div class="window-bar">
@@ -61,7 +67,7 @@ export function toDutch() {
       </p>
     </div>
   `
-
+  /* School projects */
   const windowSchool = document.getElementById("window-school");
   windowSchool.innerHTML = `
     <div class="window-bar">
@@ -80,6 +86,7 @@ export function toDutch() {
     </div>
   `
 
+  /* GenAI exposed */
   const windowWater = document.getElementById("window-water");
   windowWater.innerHTML = `
     <div class="window-bar">
@@ -111,6 +118,7 @@ export function toDutch() {
     </div>
   `
 
+  /* Kidnapped: Castle Breakout */
   const windowGame = document.getElementById("window-game");
   windowGame.innerHTML = `
     <div class="window-bar">
@@ -145,6 +153,7 @@ export function toDutch() {
     </div>
   `
 
+  /* Personal projects */
   const windowPersonal = document.getElementById("window-personal");
   windowPersonal.innerHTML = `
     <div class="window-bar">
@@ -159,6 +168,7 @@ export function toDutch() {
       </div>
   `
 
+  /* Task manager */
   const windowTask = document.getElementById("window-task");
   windowTask.innerHTML = `
     <div class="window-bar">
@@ -185,6 +195,7 @@ export function toDutch() {
     </div>
   `
 
+  /* Task manager images */
   const windowTaskImg = document.getElementById("window-task-img");
   windowTaskImg.innerHTML = `
     <div class="window-bar">
@@ -198,6 +209,7 @@ export function toDutch() {
     </div>
   `
 
+  /* My resume */
   const windowResume = document.getElementById("window-resume");
   windowResume.innerHTML = `
     <div class="window-bar">
@@ -209,6 +221,7 @@ export function toDutch() {
     </div>
   `
 
+  /* Contact me */
   const windowContact = document.getElementById("window-contact");
   windowContact.innerHTML = `
     <div class="window-bar">

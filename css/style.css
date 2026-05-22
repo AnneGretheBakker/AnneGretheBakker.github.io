@@ -20,6 +20,7 @@ html, body {
   left: 0;
   width: 100%;
   z-index: 9999;
+  margin-top: 0;
 }
 
 .nav-btn {
@@ -81,6 +82,28 @@ html, body {
 
 .iconClick {
   cursor: pointer;
+}
+
+/* App icons */
+#appIcons .icon {
+  margin-left: 50px;
+}
+
+#appIcons h2 {
+  margin-top: 0;
+  padding-top: 0;
+  max-width: 100px;
+  font-size: larger;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+#appIcons {
+  margin-top: 50px;
+}
+
+.navClick {
+  margin: 5px;
 }
 
 /* Set looks for each window */
@@ -145,27 +168,7 @@ html, body {
   width: 250px;
 }
 
-#appIcons .icon {
-  margin-left: 50px;
-}
-
-#appIcons h2 {
-  margin-top: 0;
-  padding-top: 0;
-  max-width: 100px;
-  font-size: larger;
-  text-align: center;
-  font-family: 'Courier New', monospace;
-}
-
-#appIcons {
-  margin-top: 50px;
-}
-
-.navClick {
-  margin: 5px;
-}
-
+/* Set look for the change language div */
 #changeLanguage button {
   background: none;
   border: none;
@@ -186,8 +189,4 @@ html, body {
   position: absolute;
   top: 735px;
   border: 2px solid #0a0f0a;
-}
-
-.navbar {
-  margin-top: 0;
 }

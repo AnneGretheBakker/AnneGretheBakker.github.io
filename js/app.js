@@ -41,8 +41,11 @@ const startButton = document.querySelector('#startButton');
 const changeLanguage = document.querySelector('#changeLanguage');
 const toggleButton = document.getElementById('toggleLanguage');
 const resetButton = document.getElementById('reset');
-let currentLanguage = 'en'; // 'en' of 'nl'
+let currentLanguage = 'en'; // 'en' or 'nl'
 
+/**
+ * Update the language and change the buttons
+ */
 function updateLanguageUI() {
   if (currentLanguage === 'en') {
     toDutch();
@@ -55,20 +58,32 @@ function updateLanguageUI() {
   }
 }
 
+/**
+ * Change language when clicking on the toggleButton
+ */
 toggleButton.addEventListener('click', () => {
   updateLanguageUI();
   currentLanguage = (currentLanguage === 'en') ? 'nl' : 'en';
 });
 
+/**
+ * Reset window positions when clicking on the resetButton
+ */
 resetButton.addEventListener('click', () => {
   resetWindowPositions();
 });
 
+/**
+ * Open changeLanguage div when clicking on the startButton
+ */
 startButton.addEventListener('click', (e) => {
   e.stopPropagation();
   changeLanguage.style.display = 'block';
 })
 
+/**
+ * Reset the window positions to the original positions
+ */
 function resetWindowPositions() {
   const windows = document.querySelectorAll('.window');
   windows.forEach(win => {
@@ -77,6 +92,9 @@ function resetWindowPositions() {
   });
 }
 
+/**
+ * Close the changeLanguage div when clicking anywhere thats not the startButton or changeLanguage div
+ */
 document.addEventListener('click', (event) => {
   const startBtn = event.target.closest('#startButton');
   const isInsideChangeLanguage = changeLanguage && changeLanguage.contains(event.target);
@@ -91,6 +109,11 @@ document.addEventListener('click', (event) => {
   }
 });
 
+/**
+ * Get the image name for the given window
+ * @param windowId The id of the given window
+ * @returns {*|string} The name of the image connected to the window
+ */
 function getImgNav(windowId) {
   if (windowId === "about") {
     return "computer";
@@ -115,12 +138,18 @@ function getImgNav(windowId) {
   }
 }
 
+/**
+ * Bring the window(s) connected to the clicked image to the front
+ */
 document.querySelector('.nav-links').addEventListener('click', (e) => {
   const navIcon = e.target.closest('.navClick');
   if (!navIcon) return;
+
   e.stopPropagation();
-  const windowId = navIcon.id.replace('Nav', ''); // "about" from "aboutNav"
+
+  const windowId = navIcon.id.replace('Nav', '');
   const windowElement = document.getElementById(`window-${windowId}`);
+
   if (windowElement) bringToFront(windowElement);
 });
 
@@ -176,6 +205,9 @@ document.addEventListener('mousedown', (e) => {
   e.preventDefault(); // voorkom tekstselectie tijdens slepen
 });
 
+/**
+ * Drag window with the mouse when mouse moves
+ */
 document.addEventListener('mousemove', (e) => {
   if (!dragTarget) return;
   let newLeft = e.clientX - dragOffsetX;
@@ -184,6 +216,9 @@ document.addEventListener('mousemove', (e) => {
   dragTarget.style.top = newTop + 'px';
 });
 
+/**
+ * Stop dragging the window when releasing the mouse
+ */
 document.addEventListener('mouseup', () => {
   dragTarget = null;
 });
