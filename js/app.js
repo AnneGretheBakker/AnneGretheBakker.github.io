@@ -40,15 +40,18 @@ document.addEventListener('click', (e) => {
 const startButton = document.querySelector('#startButton');
 const changeLanguage = document.querySelector('#changeLanguage');
 const toggleButton = document.getElementById('toggleLanguage');
+const resetButton = document.getElementById('reset');
 let currentLanguage = 'en'; // 'en' of 'nl'
 
 function updateLanguageUI() {
   if (currentLanguage === 'en') {
     toDutch();
     toggleButton.textContent = 'Verander de taal naar Engels';
+    resetButton.textContent = 'Reset window posities';
   } else {
     toEnglish();
     toggleButton.textContent = 'Change language to Dutch';
+    resetButton.textContent = 'Reset window positions';
   }
 }
 
@@ -57,10 +60,22 @@ toggleButton.addEventListener('click', () => {
   currentLanguage = (currentLanguage === 'en') ? 'nl' : 'en';
 });
 
+resetButton.addEventListener('click', () => {
+  resetWindowPositions();
+});
+
 startButton.addEventListener('click', (e) => {
   e.stopPropagation();
   changeLanguage.style.display = 'block';
 })
+
+function resetWindowPositions() {
+  const windows = document.querySelectorAll('.window');
+  windows.forEach(win => {
+    win.style.left = '';
+    win.style.top = '';
+  });
+}
 
 document.addEventListener('click', (event) => {
   const startBtn = event.target.closest('#startButton');
