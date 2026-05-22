@@ -1,0 +1,193 @@
+/* Set the background color */
+
+body {
+  background-image: linear-gradient(#fcc1d7, #ff69b4, #fcc1d7);
+}
+
+/* Make the screen fill the whole screen apart from the nav bar and not scrollable */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Nav bar */
+.navbar {
+  background-color: #fd72ab;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.nav-btn {
+  background: #fd72ab;
+  border: 1px solid #0a0f0a;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover {
+  background: #fcc1d7;
+}
+
+/* Set starting positions of all windows */
+#window-selfie { top: 40px; left: 1400px; }
+#window-about   { top: 60px; left: 250px; }
+#window-school  { top: 620px; left: 200px; }
+#window-water   { top: 80px; left: 300px; }
+#window-water-img { top: 350px; left: 1000px; }
+#window-personal  { top: 620px; left: 1350px; }
+#window-resume  { top: 40px; left: 1200px; }
+#window-contact { top: 40px; left: 900px; }
+#window-game { top: 250px; left: 1100px; }
+#window-game-img { top: 30px; left: 350px; }
+#window-task { top: 375px; left: 200px; }
+#window-task-img { top: 70px; left: 850px; }
+
+/* Set basic look for all windows */
+.window {
+  position: absolute;
+  width: 600px;
+  background: #ece9d8;
+  border: 2px solid #0a0f0a;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+  font-family: 'Courier New', monospace;
+  z-index: 1000;
+}
+
+.window-bar {
+  background: #fd72ab;
+  color: #fcc1d7;
+  padding: 6px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+}
+
+.window-close {
+  background: #c0c0c0;
+  border: 1px solid #000;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.window-content {
+  padding: 10px;
+}
+
+.iconClick {
+  cursor: pointer;
+}
+
+/* Set looks for each window */
+#window-selfie {
+  width: 450px;
+  length: 500px;
+}
+
+#window-school, #window-personal {
+  width: 500px;
+}
+
+#window-school .window-content, #window-personal .window-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#window-school .projectsDiv, #window-personal .projectsDiv {
+  text-align: center;
+}
+
+#window-school .projectsDiv h3, #window-personal .projectsDiv h3 {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+#window-school img, #window-personal img {
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+}
+
+#window-game-img {
+  width: 700px;
+}
+
+#window-game-img .window-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+#game-slideshow {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+#window-task-img {
+  width: 900px;
+}
+
+#window-resume {
+  width: 550px;
+}
+
+#window-contact {
+  width: 250px;
+}
+
+#appIcons .icon {
+  margin-left: 50px;
+}
+
+#appIcons h2 {
+  margin-top: 0;
+  padding-top: 0;
+  max-width: 100px;
+  font-size: larger;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+#appIcons {
+  margin-top: 50px;
+}
+
+.navClick {
+  margin: 5px;
+}
+
+#changeLanguage button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  height: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+}
+
+#changeLanguage {
+  background: #ece9d8;
+  width: 176px;
+  margin-bottom: 0;
+  position: absolute;
+  top: 800px;
+  border: 2px solid #0a0f0a;
+}
+
+.navbar {
+  margin-top: 0;
+}
