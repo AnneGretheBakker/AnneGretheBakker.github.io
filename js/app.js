@@ -142,56 +142,44 @@ document.addEventListener('click', (e) => {
  *
  * @param win The window to drag
  */
-function makeDraggable(win) {
-  const bar = win.querySelector('.window-bar');
-  let offsetX, offsetY, mouseX, mouseY, isDragging = false;
+let dragTarget = null;
+let dragOffsetX = 0, dragOffsetY = 0;
 
-  // Set isDragging to true if mouse is down on the top of the window, and put the window to the front
-  bar.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - win.offsetLeft;
-    offsetY = e.clientY - win.offsetTop;
-    win.style.position = 'absolute';
-    bringToFront(win);
+document.addEventListener('mousedown', (e) => {
+  const bar = e.target.closest('.window-bar');
+  if (!bar) return;
+  const win = bar.closest('.window');
+  if (!win) return;
 
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-  });
+  // Start slepen
+  dragTarget = win;
+  dragOffsetX = e.clientX - win.offsetLeft;
+  dragOffsetY = e.clientY - win.offsetTop;
+  win.style.position = 'absolute';
+  bringToFront(win);
 
-  // Drag window when move moves if isDragging is true
-  function onMouseMove(e) {
-    if (!isDragging) return;
-    let newLeft = e.clientX - offsetX;
-    let newTop = e.clientY - offsetY;
-    win.style.left = newLeft + 'px';
-    win.style.top = newTop + 'px';
-  }
+  e.preventDefault(); // voorkom tekstselectie tijdens slepen
+});
 
-  // Set isDragging to false when mouse is up
-  function onMouseUp() {
-    isDragging = false;
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-  }
-}
+document.addEventListener('mousemove', (e) => {
+  if (!dragTarget) return;
+  let newLeft = e.clientX - dragOffsetX;
+  let newTop = e.clientY - dragOffsetY;
+  dragTarget.style.left = newLeft + 'px';
+  dragTarget.style.top = newTop + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+  dragTarget = null;
+});
 
 /**
  * Brings any window to the front when clicked anywhere inside it.
  */
-document.querySelectorAll('.window').forEach(win => {
-  win.addEventListener('mousedown', (e) => {
-    // If the click is on the close button, don't change z-index
-    if (e.target.classList.contains('window-close')) return;
-
-    bringToFront(win);
-  });
-});
-
-/**
- * Make each of the windows draggable
- */
-document.querySelectorAll('.window').forEach(win => {
-  makeDraggable(win);
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.window-close')) return;
+  const win = e.target.closest('.window');
+  if (win) bringToFront(win);
 });
 
 // Game slide show array
