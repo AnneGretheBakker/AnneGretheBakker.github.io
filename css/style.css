@@ -1,7 +1,7 @@
 /* Set the background color */
 
 body {
-  background-image: linear-gradient(#fcc1d7, #ff69b4, #fcc1d7);
+  background-image: linear-gradient(#fcc1d7, 	#FF69B4, #fcc1d7);
 }
 
 /* Make the screen fill the whole screen apart from the nav bar and not scrollable */
