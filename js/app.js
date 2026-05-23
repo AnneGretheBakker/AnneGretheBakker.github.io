@@ -108,6 +108,13 @@ function closeAll() {
   windows.forEach(win => {
     win.style.display = 'none';
   });
+
+  const navlinks = document.querySelector(".nav-links");
+  navlinks.innerHTML = `
+    <button id="startButton" style="border: none; appearance: none; background-color: inherit; padding: 0;">
+      <img src="/img/start.png" width="180px">
+    </button>
+  `;
 }
 
 /**
