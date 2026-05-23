@@ -41,6 +41,7 @@ const startButton = document.querySelector('#startButton');
 const changeLanguage = document.querySelector('#changeLanguage');
 const toggleButton = document.getElementById('toggleLanguage');
 const resetButton = document.getElementById('reset');
+const closeAllButton = document.getElementById('closeAll');
 let currentLanguage = 'en'; // 'en' or 'nl'
 
 /**
@@ -74,6 +75,13 @@ resetButton.addEventListener('click', () => {
 });
 
 /**
+ * Close all windows when clicking on the closeAllButton
+ */
+closeAllButton.addEventListener('click', () => {
+  closeAll();
+});
+
+/**
  * Open changeLanguage div when clicking on the startButton
  */
 startButton.addEventListener('click', (e) => {
@@ -89,6 +97,16 @@ function resetWindowPositions() {
   windows.forEach(win => {
     win.style.left = '';
     win.style.top = '';
+  });
+}
+
+/**
+ * Close all windows
+ */
+function closeAll() {
+  const windows = document.querySelectorAll('.window');
+  windows.forEach(win => {
+    win.style.display = 'none';
   });
 }
 
