@@ -36,18 +36,18 @@ html, body {
 }
 
 /* Set starting positions of all windows */
-#window-selfie { top: 40px; left: 1400px; }
-#window-about   { top: 60px; left: 250px; }
-#window-school  { top: 620px; left: 200px; }
-#window-water   { top: 80px; left: 300px; }
-#window-water-img { top: 350px; left: 1000px; }
-#window-personal  { top: 620px; left: 1350px; }
-#window-resume  { top: 40px; left: 1200px; }
-#window-contact { top: 40px; left: 900px; }
-#window-game { top: 250px; left: 1100px; }
-#window-game-img { top: 30px; left: 350px; }
-#window-task { top: 375px; left: 200px; }
-#window-task-img { top: 70px; left: 850px; }
+#window-selfie { top: 5%; left: 73%; }
+#window-about   { top: 6%; left: 13%; }
+#window-school  { top: 65%; left: 10%; }
+#window-water   { top: 8%; left: 15%; }
+#window-water-img { top: 35%; left: 53%; }
+#window-personal  { top: 65%; left: 70%; }
+#window-resume  { top: 4%; left: 62%; }
+#window-contact { top: 4%; left: 47%; }
+#window-game { top: 23%; left: 58%; }
+#window-game-img { top: 4%; left: 18%; }
+#window-task { top: 38%; left: 10%; }
+#window-task-img { top: 7%; left: 45%; }
 
 /* Set basic look for all windows */
 .window {
@@ -187,13 +187,13 @@ html, body {
   width: 176px;
   margin-bottom: 0;
   position: absolute;
-  top: 693px;
+  top: 74%;
   border: 2px solid #0a0f0a;
 }
 
 #water-slideshow-container {
   width: 100%;
-  height: 350px;
+  height: 35%;
   display: flex;
   align-items: center;
   justify-content: center;
