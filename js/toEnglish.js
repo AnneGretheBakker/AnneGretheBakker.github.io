@@ -110,8 +110,6 @@ export function toEnglish() {
 
         <b>Software:</b> Connected frontend to backend using JavaScript and Python.<br>
 
-        <b>Hardware:</b> Programmed the water release mechanism with C++.<br>
-
         <b>Team process:</b> Pitched the idea, worked out the details after it was chosen, and collaborated closely with
         a product owner for the first time – teaching me agile communication and requirement management.<br><br>
 

@@ -301,11 +301,6 @@ function initGameSlideshow() {
   }
 }
 
-/**
- * Initialize game slideshow when everything is loaded
- */
-document.addEventListener('DOMContentLoaded', initGameSlideshow);
-
 // Task slide show array
 const taskImages = [
   '/img/taskimg1.png',
@@ -349,7 +344,107 @@ function initTaskSlideshow() {
   }
 }
 
+// Water images
+const waterSlides = [
+  { type: 'video', src: '/img/waterimg1.mp4' },
+  { type: 'image', src: '/img/waterimg2.jpg' },
+  { type: 'image', src: '/img/waterimg3.jpg' },
+  { type: 'image', src: '/img/waterimg4.jpg' }
+];
+
+let currentWaterIndex = 0;
+let waterVideoElement = null; // to track video for pausing
+
+/**
+ * Update the container to show the correct video or image
+ */
+function updateWaterSlide() {
+  const container = document.getElementById('water-slideshow-container');
+  if (!container) return;
+
+  const slide = waterSlides[currentWaterIndex];
+  container.innerHTML = '';
+
+  if (slide.type === 'video') {
+    const video = document.createElement('video');
+    video.src = slide.src;
+    video.controls = true;
+    video.style.maxWidth = '100%';
+    video.style.maxHeight = '100%';
+    video.preload = 'metadata';
+    container.appendChild(video);
+    waterVideoElement = video;
+  } else {
+    const img = document.createElement('img');
+    img.src = slide.src;
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+    container.appendChild(img);
+    waterVideoElement = null;
+  }
+}
+
+/**
+ * Initialize the water slideshow by creating the container
+ */
+function initWaterSlideshow() {
+  const waterWindow = document.getElementById('window-water-img');
+  if (!waterWindow) return;
+
+  let container = document.getElementById('water-slideshow-container');
+
+  if (!container) {
+    const contentDiv = waterWindow.querySelector('.window-content');
+    const oldImg = document.getElementById('water-slideshow');
+
+    if (oldImg) {
+      const containerDiv = document.createElement('div');
+      containerDiv.id = 'water-slideshow-container';
+      containerDiv.style.flex = '1';
+      containerDiv.style.display = 'flex';
+      containerDiv.style.justifyContent = 'center';
+      containerDiv.style.alignItems = 'center';
+      oldImg.parentNode.replaceChild(containerDiv, oldImg);
+      container = containerDiv;
+    } else {
+      container = document.createElement('div');
+      container.id = 'water-slideshow-container';
+      container.style.flex = '1';
+      const contentDiv2 = waterWindow.querySelector('.window-content');
+      const navBtns = contentDiv2.querySelectorAll('.nav-btn');
+      contentDiv2.insertBefore(container, navBtns[1]);
+    }
+  }
+
+  const prevBtn = waterWindow.querySelector('.prev-btn');
+  const nextBtn = waterWindow.querySelector('.next-btn');
+
+  if (prevBtn && nextBtn) {
+    const newPrev = prevBtn.cloneNode(true);
+    const newNext = nextBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+    nextBtn.parentNode.replaceChild(newNext, nextBtn);
+
+    newPrev.addEventListener('click', () => {
+      if (waterVideoElement) waterVideoElement.pause();
+      currentWaterIndex = (currentWaterIndex - 1 + waterSlides.length) % waterSlides.length;
+      updateWaterSlide();
+    });
+    newNext.addEventListener('click', () => {
+      if (waterVideoElement) waterVideoElement.pause();
+      currentWaterIndex = (currentWaterIndex + 1) % waterSlides.length;
+      updateWaterSlide();
+    });
+  }
+
+  updateWaterSlide();
+}
+
 /**
  * Initialize task slideshow when everything is loaded
  */
-document.addEventListener('DOMContentLoaded', initTaskSlideshow);
+document.addEventListener('DOMContentLoaded', () => {
+  initTaskSlideshow();
+  initGameSlideshow();
+  initWaterSlideshow();
+});
